@@ -31,20 +31,12 @@ public class Tests {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         Configuration.browserCapabilities = capabilities;
-
-        /*
-        System.setProperty("webdriver.chrome.driver",System.getenv("CHROME_DRIVER"));
-        WebDriver driver;
-        driver = new ChromeDriver(options);
-        setWebDriver(driver);
-         */
     }
 
     @Test
     public void firstSelenide(){
         open("https://www.google.ru/");
         $(By.name("q")).setValue("Открытие").pressEnter();
-        //$$(By.xpath("//div[@class='g']")).shouldHave(size(6));
         ElementsCollection resultSearch = $$(By.xpath("//div[@class='g']"));
         System.out.println(resultSearch);
         SelenideElement elem = resultSearch.find(text("Открытие (банк) — Википедия"));
@@ -70,53 +62,5 @@ public class Tests {
                 "Курс покупки USD не меньше курса продажи"
         );
     }
-
-    /*
-
-        source()
-
-        import static com.codeborne.selenide.Screenshots.getScreenShotAsFile;
-
-        File screenshot = getScreenShotAsFile();
-
-
-        $("#submit").click();
-
-
-        waitUntil(Condition, milliseconds)
-        waitWhile(Condition, milliseconds)
-
-
-
-        visible / appear // e.g. $(“input”).shouldBe(visible)
-        present / exist // условия присутствия элемента в DOM
-        hidden / disappear // not(visible)
-        readonly // e.g. $(“input”).shouldBe(readonly)
-        name // e.g. $(“input”).shouldHave(name(“fname”))
-        value // e.g. $(“input”).shouldHave(value(“John”))
-        type // e.g. $(“#input”).shouldHave(type(“checkbox”))
-        id // e.g. $(“#input”).shouldHave(id(“myForm”))
-        empty // e.g. $(“h2”).shouldBe(empty)
-        attribute(name) // e.g. $(“#input”).shouldHave(attribute(“required”))
-        attribute(name, value) // e.g. $(“#list li”).shouldHave(attribute(“class”, “active checked”))
-        cssClass(String) // e.g. $(“#list li”).shouldHave(cssClass(“checked”))
-        focused
-        enabled
-        disabled
-        selected
-        matchText(String regex)
-        text(String substring)
-        exactText(String wholeText)
-        textCaseSensitive(String substring)
-        exactTextCaseSensitive(String wholeText)
-
-
-
-        byText - поиск элемента по точному тексту
-        withText - поиск элемента по тексту (подстроке)
-        by - поиск элемента по атрибуту
-        byTitle - поиск по атрибуту “title”
-        byValue - поиск по атрибуту “value”
-        */
 
 }
